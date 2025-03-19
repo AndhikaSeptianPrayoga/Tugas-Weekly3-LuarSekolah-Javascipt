@@ -1,0 +1,161 @@
+![Luar Sekolah](https://www.luarsekolah.com/images/svg/logo.svg)
+
+# Tugas 3: Javascript
+
+## 📌 Informasi Peserta
+- **Nama**: Andhika Septian Prayoga  
+- **Okupasi**: Web Development  
+
+---
+
+## 📋 Detail Tugas
+Dalam halaman utama website, wajib terdapat beberapa struktur, diantaranya:
+1. **Header** Header dengan navigasi
+2. **Hero section** Hero section dengan slideshow
+3. **Section Form** Section kontak dengan formulir
+4. **Riwayat Dokumen** Section riwayat dengan formulir dan daftar buku
+5. **Formulir kontak sederhana** Interaksi JavaScript untuk slideshow, toggle menu, validasi formulir, dan penambahan dokumen
+
+
+Selain struktur di atas, peserta bebas menambahkan struktur lain sesuai dengan kebutuhan.
+
+---
+
+## 🖥️ Source Code HTML
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh Interaktif JavaScript</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Selamat Datang di Contoh Interaktif JavaScript</h1>
+        <div class="toggle-menu" onclick="toggleMenu()">Menu</div>
+        <nav class="menu">
+            <a href="#hero">Beranda</a>
+            <a href="#contact">Kontak</a>
+            <a href="#book-history">Riwayat Buku</a>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="slideshow-container">
+            <img src="/1.png" class="slides" alt="Slide 1">
+            <img src="/2.png" class="slides" alt="Slide 2">
+            <img src="/3.png" class="slides" alt="Slide 3">
+            <img src="/4.png" class="slides" alt="Slide 4">
+
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Hubungi Kami</h2>
+        <form onsubmit="return validateForm()">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <input type="submit" value="Kirim">
+        </form>
+        <div id="message" class="hidden">Terima kasih telah menghubungi kami!</div>
+    </section>
+
+    <section id="book-history">
+        <h2>Riwayat Dokumen</h2>
+        <form onsubmit="return addBook()">
+            <label for="book-title">Konteks Dokumen:</label>
+            <input type="text" id="book-title" name="book-title" required>
+            <br>
+            <label for="author">Pembuat:</label>
+            <input type="text" id="author" name="author" required>
+            <br>
+            <input type="submit" value="Tambah Buku">
+        </form>
+        <ul id="book-list"></ul>
+    </section>
+
+    <script>    
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slides");
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.style.display = "none");
+            slides[n].style.display = "block";
+        }
+
+        function changeSlide(n) {
+            slideIndex += n;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+            showSlide(slideIndex);
+        }
+
+        function autoSlide() {
+            changeSlide(1);
+            setTimeout(autoSlide, 2000);
+        }
+
+        showSlide(slideIndex);
+        setTimeout(autoSlide, 2000);
+
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            if (name === '' || email === '') {
+                alert('Semua kolom harus diisi!');
+                return false;
+            }
+            document.getElementById('message').style.display = 'block';
+            return true;
+        }
+
+        function handleScroll() {
+            const elements = document.querySelectorAll('.animate');
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (position < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+
+        function addBook() {
+            const title = document.getElementById('book-title').value;
+            const author = document.getElementById('author').value;
+            if (title === '' || author === '') {
+                alert('Semua kolom harus diisi!');
+                return false;
+            }
+            const bookList = document.getElementById('book-list');
+            const listItem = document.createElement('li');
+            listItem.textContent = `${title} oleh ${author}`;
+            bookList.appendChild(listItem);
+            document.getElementById('book-title').value = '';
+            document.getElementById('author').value = '';
+            return false;
+        }
+    </script>
+</body>
+</html>
+
+```
