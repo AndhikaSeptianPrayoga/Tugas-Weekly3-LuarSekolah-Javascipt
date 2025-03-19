@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive JavaScript Example</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Interactive JavaScript Example</h1>
+        <div class="toggle-menu" onclick="toggleMenu()">Menu</div>
+        <nav class="menu">
+            <a href="#hero">Home</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="hero">
+        <div class="slideshow-container">
+            <img src="/1.png" class="slides" alt="Slide 1">
+            <img src="/2.png" class="slides" alt="Slide 2">
+            <img src="/3.png" class="slides" alt="Slide 3">
+            <img src="/4.png" class="slides" alt="Slide 4">
+
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+        <div id="message" style="display:none;">Thank you for contacting us!</div>
+    </section>
+
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll(".slides");
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.style.display = "none");
+            slides[n].style.display = "block";
+        }
+
+        function changeSlide(n) {
+            slideIndex += n;
+            if (slideIndex >= slides.length) slideIndex = 0;
+            if (slideIndex < 0) slideIndex = slides.length - 1;
+            showSlide(slideIndex);
+        }
+
+        function autoSlide() {
+            changeSlide(1);
+            setTimeout(autoSlide, 2000);
+        }
+
+        showSlide(slideIndex);
+        setTimeout(autoSlide, 2000);
+
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            if (menu.style.display === 'flex') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'flex';
+            }
+        }
+
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            if (name === '' || email === '') {
+                alert('All fields are required!');
+                return false;
+            }
+            document.getElementById('message').style.display = 'block';
+            return true;
+        }
+
+        function handleScroll() {
+            const elements = document.querySelectorAll('.animate');
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (position < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', handleScroll);
+    </script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+/* Dark mode styles */
+
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: none;
+    width: 100%;
+    height: 400px; 
+    object-fit: cover; 
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Toggle menu styles */
+.menu {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+}
+
+.menu a {
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.menu a:hover {
+    background-color: #575757;
+}
+
+.toggle-menu {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .toggle-menu {
+        display: block;
+    }
+
+    .menu {
+        display: flex;
+    }
+}
+
+
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #1f1f1f;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    color: #ffffff;
+}
+
+.toggle-menu {
+    background-color: #333;
+    color: #ffffff;
+}
+
+.menu {
+    background-color: #1f1f1f;
+}
+
+.menu a {
+    color: #e0e0e0;
+}
+
+.menu a:hover {
+    background-color: #575757;
+}
+
+.slideshow-container {
+    background-color: #1f1f1f;
+}
+
+.prev, .next {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+section {
+    padding: 20px;
+}
+
+section#contact {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+section#contact h2 {
+    color: #ffffff;
+}
+
+section#contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+section#contact label {
+    margin-bottom: 5px;
+    color: #e0e0e0;
+}
+
+section#contact input[type="text"],
+section#contact input[type="email"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+section#contact input[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+section#contact input[type="submit"]:hover {
+    background-color: #575757;
+}
+
+/* Animation on scroll */
+.animate {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.animate.visible {
+    opacity: 1;
+}
