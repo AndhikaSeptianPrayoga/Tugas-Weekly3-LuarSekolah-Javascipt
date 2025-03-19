@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive JavaScript Example</title>
+    <title>Contoh Interaktif JavaScript</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to Interactive JavaScript Example</h1>
+        <h1>Selamat Datang di Contoh Interaktif JavaScript</h1>
         <div class="toggle-menu" onclick="toggleMenu()">Menu</div>
         <nav class="menu">
-            <a href="#hero">Home</a>
-            <a href="#contact">Contact</a>
+            <a href="#hero">Beranda</a>
+            <a href="#contact">Kontak</a>
+            <a href="#book-history">Riwayat Buku</a>
         </nav>
     </header>
 
@@ -29,20 +30,34 @@
     </section>
 
     <section id="contact">
-        <h2>Contact Us</h2>
+        <h2>Hubungi Kami</h2>
         <form onsubmit="return validateForm()">
-            <label for="name">Name:</label>
+            <label for="name">Nama:</label>
             <input type="text" id="name" name="name" required>
             <br>
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required>
             <br>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Kirim">
         </form>
-        <div id="message" style="display:none;">Thank you for contacting us!</div>
+        <div id="message" class="hidden">Terima kasih telah menghubungi kami!</div>
     </section>
 
-    <script>
+    <section id="book-history">
+        <h2>Riwayat Dokumen</h2>
+        <form onsubmit="return addBook()">
+            <label for="book-title">Konteks Dokumen:</label>
+            <input type="text" id="book-title" name="book-title" required>
+            <br>
+            <label for="author">Pembuat:</label>
+            <input type="text" id="author" name="author" required>
+            <br>
+            <input type="submit" value="Tambah Buku">
+        </form>
+        <ul id="book-list"></ul>
+    </section>
+
+    <script>    
         let slideIndex = 0;
         const slides = document.querySelectorAll(".slides");
 
@@ -79,7 +94,7 @@
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             if (name === '' || email === '') {
-                alert('All fields are required!');
+                alert('Semua kolom harus diisi!');
                 return false;
             }
             document.getElementById('message').style.display = 'block';
@@ -98,6 +113,22 @@
         }
 
         window.addEventListener('scroll', handleScroll);
+
+        function addBook() {
+            const title = document.getElementById('book-title').value;
+            const author = document.getElementById('author').value;
+            if (title === '' || author === '') {
+                alert('Semua kolom harus diisi!');
+                return false;
+            }
+            const bookList = document.getElementById('book-list');
+            const listItem = document.createElement('li');
+            listItem.textContent = `${title} oleh ${author}`;
+            bookList.appendChild(listItem);
+            document.getElementById('book-title').value = '';
+            document.getElementById('author').value = '';
+            return false;
+        }
     </script>
 </body>
 </html>

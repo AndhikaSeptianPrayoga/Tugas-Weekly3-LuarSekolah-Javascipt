@@ -166,3 +166,73 @@ section#contact input[type="submit"]:hover {
 .animate.visible {
     opacity: 1;
 }
+
+/* Book list styles */
+#book-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#book-list li {
+    background-color: #333;
+    color: #e0e0e0;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+section#book-history {
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+section#book-history h2 {
+    color: #ffffff;
+}
+
+section#book-history form {
+    display: flex;
+    flex-direction: column;
+}
+
+section#book-history label {
+    margin-bottom: 5px;
+    color: #e0e0e0;
+}
+
+section#book-history input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+section#book-history input[type="submit"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+section#book-history input[type="submit"]:hover {
+    background-color: #575757;
+}
+
+section#book-history ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+section#book-history ul li {
+    background-color: #333;
+    color: #e0e0e0;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
