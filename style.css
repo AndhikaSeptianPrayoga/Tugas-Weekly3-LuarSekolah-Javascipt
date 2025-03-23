@@ -1,4 +1,4 @@
-/* Dark mode styles */
+
 
 .slideshow-container {
     position: relative;
@@ -30,7 +30,7 @@
 .prev { left: 10px; }
 .next { right: 10px; }
 
-/* Toggle menu styles */
+
 .menu {
     display: none;
     flex-direction: column;
