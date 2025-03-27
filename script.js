@@ -69,3 +69,43 @@ function addBook() {
     document.getElementById('author').value = '';
     return false;
 }
+
+const tableData = [
+    { judul: "Panduan JavaScript", pembuat: "Andi", tanggal: "2023-01-15" },
+    { judul: "Belajar HTML", pembuat: "Dhika", tanggal: "2023-02-10" },
+    { judul: "CSS untuk Pemula", pembuat: "Septian", tanggal: "2023-03-05" },
+    { judul: "Tips Deployment", pembuat: "Asep", tanggal: "2023-04-20" }
+];
+
+function populateTable() {
+    const tableBody = document.querySelector("#dataTable tbody");
+    tableData.forEach(data => {
+        const row = document.createElement("tr");
+        row.innerHTML = `
+            <td>${data.judul}</td>
+            <td>${data.pembuat}</td>
+            <td>${data.tanggal}</td>
+        `;
+        tableBody.appendChild(row);
+    });
+}
+
+document.addEventListener("DOMContentLoaded", populateTable);
+
+function searchTable() {
+    const input = document.getElementById('searchInput');
+    const filter = input.value.toLowerCase();
+    const rows = document.querySelectorAll("#dataTable tbody tr");
+
+    rows.forEach(row => {
+        const cells = row.getElementsByTagName('td');
+        let match = false;
+        for (let cell of cells) {
+            if (cell.innerText.toLowerCase().includes(filter)) {
+                match = true;
+                break;
+            }
+        }
+        row.style.display = match ? '' : 'none';
+    });
+}

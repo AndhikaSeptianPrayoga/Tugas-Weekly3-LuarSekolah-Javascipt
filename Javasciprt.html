@@ -3,27 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contoh Interaktif JavaScript</title>
+    <title>Weekly 3 Luar Sekolah</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <script src="table-data.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Tugas Weekly 3 Luar sekolah Web development </h1>
+        <h1>Tugas Weekly 3 Luar Sekolah Web Development</h1>
         <div class="toggle-menu" onclick="toggleMenu()">Menu</div>
         <nav class="menu">
             <a href="#hero">Beranda</a>
             <a href="#contact">Kontak</a>
             <a href="#book-history">Riwayat Buku</a>
+            <a href="#interactive-table">Tabel Interaktif</a>
         </nav>
     </header>
 
     <section id="hero">
         <div class="slideshow-container">
-            <img src="/1.png" class="slides" alt="Slide 1">
-            <img src="/2.png" class="slides" alt="Slide 2">
-            <img src="/3.png" class="slides" alt="Slide 3">
-            <img src="/4.png" class="slides" alt="Slide 4">
+            <img src="../1.png" class="slides" alt="Slide 1">
+            <img src="../2.png" class="slides" alt="Slide 2">
+            <img src="../3.png" class="slides" alt="Slide 3">
+            <img src="../4.png" class="slides" alt="Slide 4">
 
             <button type="button" class="prev" onclick="changeSlide(-1)">&#10094;</button>
             <button type="button" class="next" onclick="changeSlide(1)">&#10095;</button>
@@ -55,6 +57,22 @@
             <input type="submit" value="Tambah Buku">
         </form>
         <ul id="book-list"></ul>
+    </section>
+
+    <section id="interactive-table">
+        <h2>Tabel Interaktif</h2>
+        <input type="text" id="searchInput" placeholder="Cari data..." onkeyup="searchTable()">
+        <table id="dataTable" border="1">
+            <thead>
+                <tr>
+                    <th>Dokumen</th>
+                    <th>Pembuat</th>
+                    <th>Tanggal</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </section>
 </body>
 </html>
